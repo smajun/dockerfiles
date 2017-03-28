@@ -79,6 +79,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& cd /usr/src/nginx-$NGINX_VERSION \
 	&& git clone https://github.com/weibocom/nginx-upsync-module.git \
 	&& git clone https://github.com/xiaokai-wang/nginx_upstream_check_module.git \
+	&& patch -p0 < ./nginx_upstream_check_module/check_1.9.2+.patch \
 	&& ./configure $CONFIG --with-debug \
 	&& make -j$(getconf _NPROCESSORS_ONLN) \
 	&& mv objs/nginx objs/nginx-debug \
